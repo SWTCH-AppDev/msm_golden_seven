@@ -250,7 +250,7 @@ feature "DIRECTORS" do
       find("a[href*='#{director_to_edit.id}']", text: "Show details").click
       click_on "Edit director"
 
-      expect(page).to have_content(director_to_edit.bio)
+      expect(page).to have_css("input[value='#{director_to_edit.bio}']")
     end
   end
 
