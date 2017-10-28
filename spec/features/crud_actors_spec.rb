@@ -44,7 +44,7 @@ feature "ACTORS" do
       visit "/actors"
 
       test_actors.each do |current_actor|
-        expect(page).to have_content(current_actor.image_url)
+        expect(page).to have_css("img[src*='#{current_actor.image_url}']")
       end
     end
   end
@@ -101,7 +101,7 @@ feature "ACTORS" do
       visit "/actors"
       find("a[href*='#{actor_to_show.id}']", text: "Show details").click
 
-      expect(page).to have_content(actor_to_show.image_url)
+      expect(page).to have_css("img[src*='#{actor_to_show.image_url}']")
     end
   end
 

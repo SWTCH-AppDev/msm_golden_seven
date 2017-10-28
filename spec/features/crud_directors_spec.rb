@@ -44,7 +44,7 @@ feature "DIRECTORS" do
       visit "/directors"
 
       test_directors.each do |current_director|
-        expect(page).to have_content(current_director.image_url)
+        expect(page).to have_css("img[src*='#{current_director.image_url}']")
       end
     end
   end
@@ -101,7 +101,7 @@ feature "DIRECTORS" do
       visit "/directors"
       find("a[href*='#{director_to_show.id}']", text: "Show details").click
 
-      expect(page).to have_content(director_to_show.image_url)
+      expect(page).to have_css("img[src*='#{director_to_show.image_url}']")
     end
   end
 

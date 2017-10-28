@@ -56,7 +56,7 @@ feature "MOVIES" do
       visit "/movies"
 
       test_movies.each do |current_movie|
-        expect(page).to have_content(current_movie.image_url)
+        expect(page).to have_css("img[src*='#{current_movie.image_url}']")
       end
     end
   end
@@ -124,7 +124,7 @@ feature "MOVIES" do
       visit "/movies"
       find("a[href*='#{movie_to_show.id}']", text: "Show details").click
 
-      expect(page).to have_content(movie_to_show.image_url)
+      expect(page).to have_css("img[src*='#{movie_to_show.image_url}']")
     end
   end
 
